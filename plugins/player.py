@@ -64,7 +64,7 @@ async def yplay(_, message: Message):
     if ADMIN_ONLY == "Y":
         admins = await mp.get_admins(CHAT)
         if message.from_user.id not in admins:
-            m=await message.reply_sticker("CAADBQADsQIAAtILIVYld1n74e3JuQI")
+            m=await message.reply_sticker(" CAACAgEAAx0CSUIogQACBMthH5SZDy8-xjLglt9_kLOw-xwgqAACEgEAAj1ogUeSVeyyUBy0XiAE")
             await mp.delete(m)
             await mp.delete(message)
             return
@@ -180,11 +180,11 @@ async def yplay(_, message: Message):
 
     if type=="youtube" or type=="query":
         if type=="youtube":
-            msg = await message.reply_text("⚡️ **Fetching Song From YouTube...**")
+            msg = await message.reply_text("⚡️")
             url=yturl
         elif type=="query":
             try:
-                msg = await message.reply_text("⚡️ **Fetching Song From YouTube...**")
+                msg = await message.reply_text("⚡️")
                 ytquery=ysearch
                 results = YoutubeSearch(ytquery, max_results=1).to_dict()
                 url = f"https://youtube.com{results[0]['url_suffix']}"
@@ -302,7 +302,7 @@ async def deezer(_, message):
     if ADMIN_ONLY == "Y":
         admins = await mp.get_admins(CHAT)
         if message.from_user.id not in admins:
-            k=await message.reply_sticker("CAADBQADsQIAAtILIVYld1n74e3JuQI")
+            k=await message.reply_sticker(" CAACAgEAAx0CSUIogQACBMthH5SZDy8-xjLglt9_kLOw-xwgqAACEgEAAj1ogUeSVeyyUBy0XiAE")
             await mp.delete(k)
             await mp.delete(message)
             return
@@ -317,7 +317,7 @@ async def deezer(_, message):
         return
     user=f"[{message.from_user.first_name}](tg://user?id={message.from_user.id})"
     group_call = mp.group_call
-    msg = await message.reply("⚡️ **Fetching Song From JioSaavn...**")
+    msg = await message.reply("⚡️")
     try:
         p = f"https://jiosaavn-api.vercel.app/search?query={query}"
         n = requests.get(p)
@@ -331,7 +331,7 @@ async def deezer(_, message):
         try:
             thumb=a.get("image")
         except:
-            thumb="https://telegra.ph/file/181242eab5c4a74916d01.jpg"
+            thumb="https://telegra.ph/file/ed5806a62fb8a8df00d94.png"
             pass
         GET_THUMB[url] = thumb
     except:
@@ -800,7 +800,7 @@ async def channel_play_list(client, m: Message):
     if not group_call.is_connected:
         await mp.start_call()
     if len(m.command) < 2:
-        k=await m.reply_text('You forgot to pass channel id or channel username.\nExample usage: <code>/cplay Myoosik</code> or <code>/cplay -1002525252525</code>.\n\n⚠️ If you are using channel id, make sure both the bot and user account are member of the given channel.')
+        k=await m.reply_text('You forgot to pass channel id or channel username.\nExample usage: <code>/cplay Myoosik</code> or <code>/cplay -1001464003138</code>.\n\n⚠️ If you are using channel id, make sure both the bot and user account are member of the given channel.')
         await mp.delete(k)
         await mp.delete(m)
         return
@@ -822,7 +822,7 @@ async def upload(client, message):
         return
     url=playlist[0][2]
     if playlist[0][3] == "telegram":
-        await client.send_audio(chat_id=message.chat.id, audio=url, caption="Uploaded Using [MusicPlayer](https://github.com/subinps/MusicPlayer)")
+        await client.send_audio(chat_id=message.chat.id, audio=url, caption="Uploaded")
     elif playlist[0][3] == "youtube":
         file=GET_FILE[url]
         thumb=GET_THUMB[url]
@@ -863,13 +863,9 @@ allcmd = ["play", "player", "splay", f"splay@{U}", f"play@{U}", f"player@{U}"] +
 async def not_chat(_, m: Message):
     buttons = [
         [
-            InlineKeyboardButton('⚡️Make Own Bot', url='https://heroku.com/deploy?template=https://github.com/subinps/MusicPlayer'),
-            InlineKeyboardButton('🧩 Source Code', url='https://github.com/subinps/MusicPlayer'),
-        ],
-        [
-            InlineKeyboardButton('How to Make', url='https://youtu.be/iBK-5pP2eHM'),
-            InlineKeyboardButton('👨🏼‍🦯 Help', callback_data='help')       
+            InlineKeyboardButton('📲 Updates', url='https://t.me/TheKumikosetsuko'),
+            InlineKeyboardButton('💬 Support Chat', url='https://t.me/KumikoSetsuko'),
         ]
         ]
-    k=await m.reply("<b>You can't use this bot in this group, for that you have to make your own bot from the [SOURCE CODE](https://github.com/subinps/MusicPlayer) below.</b>", disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
+    k=await m.reply("<b>You can't use this bot in this group.</b>", disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons))
     await mp.delete(m)
