@@ -30,7 +30,7 @@ ydl = YoutubeDL(ydl_opts)
 links=[]
 finalurl=""
 C_PLAY=False
-STREAM=os.environ.get("STREAM_URL", "https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c19e043063f5d9/ap-southeast-1/6034685947001/playlist.m3u8?nocache=825347")
+STREAM=os.environ.get("STREAM_URL", "http://188.166.198.223/radio/8000/radio.mp3?listening-from-radio-garden=1629618028")
 regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
 match = re.match(regex,STREAM)
 regex_ = r"http.*"
